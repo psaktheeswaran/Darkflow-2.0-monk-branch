@@ -13,7 +13,6 @@ Read more about YOLO (in darknet) and download weight files [here](http://pjredd
   
 
 See demo below or see on [this imgur](http://i.imgur.com/EyZZKAA.gif)
-
   
 
 <p  align="center">  <img  src="demo.gif"/>  </p>
@@ -23,56 +22,51 @@ See demo below or see on [this imgur](http://i.imgur.com/EyZZKAA.gif)
 ## Dependencies
 
 #### Universal dependencies:
- - Python 3.8
- - TensorFlow 2.0
- - NumPy
- - OpenCV3
-#### Windows additional dependencies:
- - MSVC v142  - VS 2019 C++ x64/x86 build tools
- - Windows 10 SDK v1803
+ - [Python 3.8+](https://www.python.org/downloads/release/python-386/)
+ - [TensorFlow 2.0+](https://www.tensorflow.org/api_docs/python/tf): [Quickstart](https://www.tensorflow.org/tutorials/quickstart/beginner)
+ - [NumPy](https://numpy.org/)
+ - [OpenCV 3.0+](https://opencv.org/)
+ - [Cython](https://cython.org/	)
+#### [Windows additional dependencies](https://visualstudio.microsoft.com/downloads/):
+ - [MSVC v142  - VS 2019 C++ x64/x86 build tools](https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2019)
+ - [Windows 10 SDK v1803+](https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/)
  
 ## Getting started
-
-  
-
 You can choose _one_ of the following three ways to get started with darkflow.
 
-  
-
-1. Just build the Cython extensions in place. NOTE: If installing this way you will have to use `./flow`,`python ./flow` or `python3 ./flow` in the cloned darkflow directory instead of `flow` as darkflow is not installed globally.
-
-for Linux and MacOS use:
-```
+### 1. Just build the Cython extensions in place. NOTE: If installing this way you will have to use `./flow`,`python ./flow` or `python3 ./flow` in the cloned darkflow directory instead of `flow` as darkflow is not installed globally.
+##### for Linux and MacOS use:
+```bash
 python3 setup.py build_ext --inplace
 ```
-for Windows use:
-```
+##### for Windows use:
+```powershell
 python setup.py build_ext --inplace
 ```
 
-  
+### 2. Let pip install darkflow globally in dev mode (still globally accessible, but changes to the code immediately take effect)
 
-2. Let pip install darkflow globally in dev mode (still globally accessible, but changes to the code immediately take effect)
-
-```
+##### for Linux and MacOS use:
+```bash
 python3 -m pip install -e .
 ```
-
-  
-3. Install with pip globally
+##### for Windows use:
+```powershell
+pyhon -m pip install -e .
 ```
+
+### 3. Install with pip globally
+##### for Linux and MacOS use:
+```bash
+python3 -m pip install .
+```
+##### for Windows use:
+```powershell
 python -m pip install .
 ```
 
-  
-
 ## Parsing the annotations
-
-  
-
 Skip this if you are not training or fine-tuning anything (you simply want to forward flow a trained net)
-
-  
 
 For example, if you want to work with only 3 classes `tvmonitor`, `person`, and `pottedplant`; edit `labels.txt` as follows
 ```
@@ -82,16 +76,8 @@ pottedplant
 ```
 And that's it. `darkflow` will take care of the rest. You can also set darkflow to load from a custom labels file with the `--labels` flag (i.e. `--labels myOtherLabelsFile.txt`). This can be helpful when working with multiple models with different sets of output labels. When this flag is not set, darkflow will load from `labels.txt` by default (unless you are using one of the recognized `.cfg` files designed for the COCO or VOC dataset - then the labels file will be ignored and the COCO or VOC labels will be loaded).
 
-  
-
 ## Design the net
-
-  
-
 Skip this if you are working with one of the original configurations since they are already there. Otherwise, see the following example:
-
-  
-
 ```python
 
 ...
