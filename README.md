@@ -2,18 +2,9 @@
 
 ## Intro 
 DarkFlow has been updated to version 2 with added support for TensorFlow 2.0+
-
 Real-time object detection and classification.
-
-
-
 Read more about YOLO (in darknet) and download weight files [here](http://pjreddie.com/darknet/yolo/).
-
-
-
-
 See demo below or see on [this imgur](http://i.imgur.com/EyZZKAA.gif)
-
 <p align="center"><img src="demo.gif"/></p>
 
 
@@ -49,7 +40,7 @@ python setup.py build_ext --inplace
 ```bash
 python3 -m pip install -e .
 ```
-##### for Windows use:
+##### for Windows use:	
 ```powershell
 pyhon -m pip install -e .
 ```
@@ -327,4 +318,4 @@ flow --pbLoad built_graph/yolo.pb --metaLoad built_graph/yolo.meta --imgdir samp
 ```
 If you'd like to load a `.pb` and `.meta` file when using `return_predict()` you can set the `"pbLoad"` and `"metaLoad"` options in place of the `"model"` and `"load"` options you would normally set.
 
-Thats all
+That's all.
